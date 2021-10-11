@@ -1,0 +1,168 @@
+#NUMBER OF STEPS OF RUNS
+variable nsteps			equal 	3e6	#NVT run steps
+
+#INFORMATION PRINTING PERIODS
+variable thermodump     equal   $(v_nsteps/1e4)		#Thermo info dump period
+variable trajdump       equal   $(v_nsteps/100)    	#Config info dump period
+variable trestart       equal   $(floor(v_nsteps/1.6))    	#Restart configuration saving period
+
+#OTHER SIMULATION PARAMETERS
+variable tstep        	equal   0.002   #Integration time step for first part of simulation
+variable damp   		equal   1.0    	#Langevin thermostat damping coefficient [F_friction = -(m/damp)*v]
+
+#STRINGS
+variable fname 			string 	data.run_Tstart4.1_Tend0.		#name of the data file to be read to start the simulation
+variable thermofile     string  thermo.dat	#name of the file with thermodynamic infos
+variable simname 		string 	hello	#name of this simulation
+
+
+###____________________________________________________
+# Box and units  (use LJ units and periodic boundaries)
+
+
+units lj                 # use lennard-jones (i.e. dimensionless) units
+atom_style angle         # atoms with bonds and angles
+
+boundary p p p           # all boundaries are periodic
+
+
+######____________________________________________________
+# Pair interactions require lists of neighbours to be calculated
+
+neighbor 1.9 bin
+neigh_modify every 1 delay 1 check yes 
+
+
+
+### ___________________________________________________
+# READ "start" data file (data5 created by self-avoid.py) 
+
+read_data data5
+
+
+### ___________________________________________________
+# Generate regular RESTART files to store state of simulation (but I commented it we don't need that for short runs)
+
+#restart 5000 polymer.restart
+
+
+###___________________________________________________
+# Reset timestep 
+
+reset_timestep 0 
+
+###___________________________________________________
+# Define groups (necessary for the "compute command")
+
+group all type 1
+
+
+###___________________________________________________
+# Dump configurations
+
+dump		2 all custom ${trajdump} dumplin/dump.${simname}.*.lammpstrj mol xu yu zu
+#every trajdump timestep (defined in variable above) is each poition x,y,z of the molecules printed
+#Formatting of output file:
+dump_modify	2 sort id 			#sort per-atom lines by atom ID
+dump_modify	2 pad 10 			#pad: # of characters to convert timestep to
+dump_modify	2 format line "%d %.8e %.8e %.8e" 		#line formatting
+
+
+###___________________________________________________
+# Set up interactions - start with 'soft' potentials
+
+## angles
+angle_style  cosine
+angle_coeff   1  20.0
+# this choice gives a polymer with the same persistence length as DNA
+
+## Between bonded atoms
+bond_style   harmonic 
+bond_coeff   1   90.0   1.1    #( bond type, K (energy/distance^2), R0 distance)
+
+## Between non-bonded atoms
+pair_style     soft 1.12246152962189   		#Pushes overlapping atoms away. Check out potential here: https://docs.lammps.org/pair_soft.html
+pair_coeff * *  100.0 1.12246152962189 		#(atom type interacting with,atom type , energy, cutoff )
+
+#NOTE: All units are in LENNARD JONES POTENTIAL UNITS. Please check here: https://docs.lammps.org/units.html
+
+
+######___________________________________________________
+# Set up fixes
+
+variable seed equal 54654651			    # a seed for the thermostat
+
+fix 1 all nve                            	# NVE integrator
+fix 2 all langevin   1.0 1.0 1.0 ${seed}	# langevin thermostat
+
+
+######___________________________________________________
+# Printing things
+
+#Define variables to print in thermo.dat
+variable step	equal step
+variable temp	equal temp
+variable etot	equal etotal
+variable ke	equal ke
+variable pe	equal pe
+variable press	equal press
+
+#Thermodynamic info
+thermo_style	custom step etotal ke pe temp press
+thermo		${thermodump}
+thermo_modify	norm no
+
+
+variable t equal step
+variable mytemp equal temp
+variable myepair equal epair
+
+fix		fix_print all print ${thermodump} "${step} ${etot} ${ke} ${pe} ${temp} ${press}" file ${thermofile} screen no title "#1:step 2:etot 3:ke 4:pe 5:temp 6:press"
+
+
+######___________________________________________________
+# Set up compute commands
+
+compute myRG2compute all gyration
+#Write it into a file
+variable RG2 equal c_myRG2compute
+fix myRG2file all print 1000 "$t ${RG2}" file radius_of_gyration_squared.dat screen no
+
+compute		msd all msd com yes
+fix		msd all ave/time 1 1 8000 c_msd[4] file msddumpfile
+
+
+
+######___________________________________________________
+# Set timestep of integrator
+timestep 0.01 
+
+######___________________________________________________
+# Run integration for a number of steps to equilibrate with soft potnentials
+run 5000
+
+#write_restart DNA.equlilb.restart
+
+######___________________________________________________
+# Set up FENE-potential for bonds. Check potential here: https://docs.lammps.org/bond_fene.html
+
+#Between bonden atoms
+bond_style   fene
+special_bonds fene          					#prevents LJ from being counted twice
+bond_coeff   1    30.0   1.6   1.0   1.0    	#(bond type, K (energy/distance^2) , R0 (distance), epsilon, sigma)
+
+#Between non-bonded atoms
+pair_style      lj/cut 1.12246152962189
+pair_modify shift yes 							#Ensures energy is calculated correctly. Don't ask me why it's not correctly calculated before first.
+
+pair_coeff      1 1 1.0 1.0 1.12246152962189 	#(atom type interacting with, atom type, energy, mean diameter of the two atom types, cutoff)
+
+######___________________________________________________
+# now do the final run
+run 1000000    #(timesteps)
+
+#### write a final restart file
+#write_restart final.restart
+
+
+
