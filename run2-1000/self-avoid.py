@@ -1,3 +1,5 @@
+# Initializate the simulation initial state and parameters
+
 import random
 import math
 import numpy as np

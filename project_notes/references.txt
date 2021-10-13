@@ -1,0 +1,3 @@
+Bibliography:
+Layout:
+- *author*, *title* : *where we use that infos*
