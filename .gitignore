@@ -1,2 +1,5 @@
 *.dat
 *.lammps
+data5
+msddumpfile
+*.lammpstrj
