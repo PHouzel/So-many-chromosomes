@@ -4,7 +4,6 @@ variable nsteps			equal 	3e6	#NVT run steps
 #INFORMATION PRINTING PERIODS
 variable thermodump     equal   $(v_nsteps/1e4)		#Thermo info dump period
 variable trajdump       equal   $(v_nsteps/100)    	#Config info dump period
-variable imagedump     equal   $(v_nsteps/1e4)		#Image dump period
 variable trestart       equal   $(floor(v_nsteps/1.6))    	#Restart configuration saving period
 
 #OTHER SIMULATION PARAMETERS
@@ -70,7 +69,7 @@ dump_modify	2 format line "%d %.8e %.8e %.8e" 		#line formatting
 
 
 ###___________________________________________________
-# Set up interactions - start with 'soft' potentials (in order to give some "room" to the chain after generate it)
+# Set up interactions - start with 'soft' potentials
 
 ## angles
 angle_style  cosine
@@ -139,7 +138,7 @@ fix		msd all ave/time 1 1 8000 c_msd[4] file msddumpfile
 timestep 0.01 
 
 ######___________________________________________________
-# Run integration for a number of steps to equilibrate with soft potentials 
+# Run integration for a number of steps to equilibrate with soft potnentials
 run 5000
 
 #write_restart DNA.equlilb.restart
@@ -157,10 +156,6 @@ pair_style      lj/cut 1.12246152962189
 pair_modify shift yes 							#Ensures energy is calculated correctly. Don't ask me why it's not correctly calculated before first.
 
 pair_coeff      1 1 1.0 1.0 1.12246152962189 	#(atom type interacting with, atom type, energy, mean diameter of the two atom types, cutoff)
-
-######___________________________________________________
-# Save images for visualisation each 
-dump 3 all image ${imagedump} dumplin/image.${simname}.*.jpg type type center d -0.25 0.25 0.25 zoom 2
 
 ######___________________________________________________
 # now do the final run
