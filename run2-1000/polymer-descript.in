@@ -1,5 +1,5 @@
 #NUMBER OF STEPS OF RUNS
-variable nsteps			equal 	3e6	#NVT run steps
+variable nsteps			equal 	1e4	#NVT run steps
 
 #INFORMATION PRINTING PERIODS
 variable thermodump     equal   $(v_nsteps/1e4)		#Thermo info dump period
