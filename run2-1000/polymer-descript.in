@@ -1,9 +1,9 @@
 #NUMBER OF STEPS OF RUNS
-variable nsteps			equal 	1e4	#NVT run steps
+variable nsteps			equal 	2e6	#NVT run steps
 
 #INFORMATION PRINTING PERIODS
 variable thermodump     equal   $(v_nsteps/1e4)		#Thermo info dump period
-variable trajdump       equal   $(v_nsteps/100)    	#Config info dump period
+variable trajdump       equal   $(v_nsteps/5e4)    	#Config info dump period
 variable trestart       equal   $(floor(v_nsteps/1.6))    	#Restart configuration saving period
 
 #OTHER SIMULATION PARAMETERS
@@ -159,7 +159,7 @@ pair_coeff      1 1 1.0 1.0 1.12246152962189 	#(atom type interacting with, atom
 
 ######___________________________________________________
 # now do the final run
-run 1000000    #(timesteps)
+run $(nsteps)    #(timesteps)
 
 #### write a final restart file
 #write_restart final.restart

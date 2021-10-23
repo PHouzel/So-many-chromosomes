@@ -4,12 +4,25 @@ Deadlines:
 
 Planning:
 Up to 28/10
+TO PRESENT: model, videos (!!!), Pierre part, self-constraint 
+
+TO DO:
+- introduction(P): problem, assumptions, parameters, introduction
+- (Lo) parameters variation effects for 2k long chains 
 - check execution structure, nest-directory system by N
 - talking about the code: how to optimize? dumping periods? Terminal print? n steps, dumping etc
 - utility code: multiple simulations, save as video, etc
-- simulations at 100(N) 1000(Lo-UPLOADED) 10000(Lo-UPLOADED) 50000(Lo) ( Lo and N )
-- approx 20 sim for each lenhth (Lo & N) in order to get an effective average via variance calculation (Lu & P)
-- check therm time dep on length of chains (Lu & P or video)
+- approx 20 sim for each length (Lo & N) in order to get an effective average via variance calculation (Lu & P)
+- check therm time dep on length of chains (Lu & P or video) 
 - maybe check ergodicity with many fixed-param simulation 
 - varying const
 - pi greco theorem
+- are BCs actually needed? Self confinment and self-interactions are sufficient to generate this behaviour? 
+
+
+
+About case with fixed point on the membrane:
+- initialize
+- choose an extremal particle wrt 1 direction
+- set its v = 0 (fixed molecule: https://sourceforge.net/p/lammps/mailman/lammps-users/thread/200702151219.12011.liujiwu%40msu.edu/#msg7171223)
+- set potential 
