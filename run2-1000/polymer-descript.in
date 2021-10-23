@@ -1,9 +1,9 @@
 #NUMBER OF STEPS OF RUNS
-variable nsteps			equal 	2e6	#NVT run steps
+variable nsteps			equal 	17e6	#NVT run steps
 
 #INFORMATION PRINTING PERIODS
-variable thermodump     equal   $(v_nsteps/1e4)		#Thermo info dump period
-variable trajdump       equal   $(v_nsteps/5e4)    	#Config info dump period
+variable thermodump     equal   $(3e6/1e4)		#Thermo info dump period
+variable trajdump       equal   $(5e4)    	#Config info dump period
 variable trestart       equal   $(floor(v_nsteps/1.6))    	#Restart configuration saving period
 
 #OTHER SIMULATION PARAMETERS
@@ -72,12 +72,12 @@ dump_modify	2 format line "%d %.8e %.8e %.8e" 		#line formatting
 # Set up interactions - start with 'soft' potentials
 
 ## angles
-angle_style  cosine
+angle_style  cosine            # https://docs.lammps.org/angle_cosine.html
 angle_coeff   1  20.0
 # this choice gives a polymer with the same persistence length as DNA
 
-## Between bonded atoms
-bond_style   harmonic 
+## Between bonded atoms 
+bond_style   harmonic         
 bond_coeff   1   90.0   1.1    #( bond type, K (energy/distance^2), R0 distance)
 
 ## Between non-bonded atoms
@@ -159,7 +159,7 @@ pair_coeff      1 1 1.0 1.0 1.12246152962189 	#(atom type interacting with, atom
 
 ######___________________________________________________
 # now do the final run
-run $(nsteps)    #(timesteps)
+run $(v_nsteps)    #(timesteps)
 
 #### write a final restart file
 #write_restart final.restart
