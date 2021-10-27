@@ -72,8 +72,8 @@ dump_modify	2 format line "%d %.8e %.8e %.8e" 		#line formatting
 # Set up interactions - start with 'soft' potentials
 
 ## angles
-angle_style  cosine            # https://docs.lammps.org/angle_cosine.html
-angle_coeff   1  20.0
+angle_style  cosine            # https://docs.lammps.org/angle_cosine.html (assume E artic = E document and extract K const)
+angle_coeff   1  100.0         # modified, in origin was 20
 # this choice gives a polymer with the same persistence length as DNA
 
 ## Between bonded atoms 
