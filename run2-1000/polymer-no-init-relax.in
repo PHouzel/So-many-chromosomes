@@ -3,7 +3,7 @@ variable nsteps			equal 	30e6	#NVT run steps
 
 #INFORMATION PRINTING PERIODS
 variable thermodump     equal   $(3e6/1e4)		#Thermo info dump period
-variable trajdump       equal   $(5e5)    	#Config info dump period
+variable trajdump       equal   $(5e4)    	#Config info dump period
 variable trestart       equal   $(floor(v_nsteps/1.6))    	#Restart configuration saving period
 
 #OTHER SIMULATION PARAMETERS
@@ -65,6 +65,8 @@ dump		2 all custom ${trajdump} dumplin/dump.${simname}.*.lammpstrj mol xu yu zu
 dump_modify	2 sort id 			#sort per-atom lines by atom ID
 dump_modify	2 pad 10 			#pad: # of characters to convert timestep to
 dump_modify	2 format line "%d %.8e %.8e %.8e" 		#line formatting
+
+dump 3 all image ${trajdump} dumplin_image/dump.${simname}.*.jpg type type #zoom 10 box yes 0.001 center s 0 0 0
 
 
 ###___________________________________________________
