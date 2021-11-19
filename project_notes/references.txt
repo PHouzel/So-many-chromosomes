@@ -3,3 +3,5 @@ Layout:
 - *about*: *author*, *title*, *details*
 - [1] bending rigidity/peristence length: Stephanie Geggier and Alexander Vologodskii, Sequence dependence of DNA bending rigidity, PNAS August 31, 2010 107 (35) 15421-15426; https://doi.org/10.1073/pnas.1004809107, https://www.pnas.org/content/107/35/15421
 - [2] bending rigidity and elasticity: DNA Elasticity from Short DNA to Nucleosomal DNA. Ashok Garai, Suman Saurabh, Yves Lansac, and Prabal K. Maiti, The Journal of Physical Chemistry B 2015 119 (34), 11146-11156
+- [3] yeast DNA: https://yeastgenome.org/contig/Chromosome_III
+- [4] Lukas' prof notes

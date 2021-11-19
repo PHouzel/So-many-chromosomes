@@ -1,1 +1,9 @@
-Persistance length of DNA about 150 bp ([1])
+basis pair length = 3.4 A = 340 pm = 0.34 nm 
+
+Persistance length of DNA about 150 bp i.e. 50 nm ([1])
+
+Chromosome 4 : 180e6 bp, i.e. each chromatid 90e6 bp
+Chromosome 3 yeast: 3e5 bp ([3])
+
+For example a double stranded DNA (dsDNA) has persistence length lp = 50 nm
+and Kuhn length b = 100 nm. ([4])

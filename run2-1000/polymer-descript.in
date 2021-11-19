@@ -66,6 +66,7 @@ dump_modify	2 sort id 			#sort per-atom lines by atom ID
 dump_modify	2 pad 10 			#pad: # of characters to convert timestep to
 dump_modify	2 format line "%d %.8e %.8e %.8e" 		#line formatting
 
+# CARE: directory dumplin_image needed!
 dump 3 all image ${trajdump} dumplin_image/dump.${simname}.*.jpg type type #zoom 10 box yes 0.001 center s 0 0 0
 
 ###___________________________________________________
