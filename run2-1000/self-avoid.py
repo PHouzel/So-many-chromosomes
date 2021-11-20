@@ -7,6 +7,8 @@ import numpy as np
 global tmax
 length = 25
 dims = 3
+
+# chain length -1
 tmax = 999
 t = 0
 
