@@ -12,7 +12,7 @@ dims = 3
 box_side = 50
 
 # chain length -1
-tmax = 999
+tmax = 1999
 t = 0
 
 
@@ -36,27 +36,27 @@ front = True
 behind = True
 while t < tmax:# and t_total < tmax:
     #    print(len(x) ,  len(y) , len(coodr))
-    if [(x[t]-1),y[t],z[t]] in coodr or x[t]-1 < -box_side/2 :
+    if [(x[t]-1),y[t],z[t]] in coodr or x[t]-1 <= -box_side/2 :
         left = False
     else:
         left = True
-    if [(x[t]+1),y[t],z[t]] in coodr or x[t]+1 > box_side/2 :
+    if [(x[t]+1),y[t],z[t]] in coodr or x[t]+1 >= box_side/2 :
         right = False
     else:
         right = True
-    if [(x[t]),(y[t]+1),z[t]] in coodr or y[t]+1 > box_side/2 :
+    if [(x[t]),(y[t]+1),z[t]] in coodr or y[t]+1 >= box_side/2 :
         front = False
     else:
         front = True
-    if [(x[t]),(y[t]-1),z[t]] in coodr or y[t]-1 < -box_side/2 :
+    if [(x[t]),(y[t]-1),z[t]] in coodr or y[t]-1 <= -box_side/2 :
         behind = False
     else:
         behind = True
-    if [(x[t]),(y[t]),(z[t]+1)] in coodr or z[t]+1 > box_side/2 :
+    if [(x[t]),(y[t]),(z[t]+1)] in coodr or z[t]+1 >= box_side/2 :
         up = False
     else:
         up = True
-    if [(x[t]),(y[t]),(z[t]-1)] in coodr or z[t]-1 < -box_side/2 :
+    if [(x[t]),(y[t]),(z[t]-1)] in coodr or z[t]-1 <= -box_side/2 :
         down = False
     else:
         down = True
@@ -180,9 +180,9 @@ mass_atom = 14
 nparts = 1
 
 # Shifting procedure, to the centre of the volume:
-x += (box_side+1)/2*np.ones(len(x))
-y += (box_side+1)/2*np.ones(len(y))
-z += (box_side+1)/2*np.ones(len(z))
+x += (box_side)/2*np.ones(len(x))
+y += (box_side)/2*np.ones(len(y))
+z += (box_side)/2*np.ones(len(z))
 
 
 with open('data5','w') as fout:

@@ -8,13 +8,9 @@ global tmax
 length = 25
 dims = 3
 
-# box definition
-box_side = 50
-
 # chain length -1
-tmax = 999
+tmax = 1999
 t = 0
-
 
 x = [0]
 y = [0]
@@ -36,27 +32,27 @@ front = True
 behind = True
 while t < tmax:# and t_total < tmax:
     #    print(len(x) ,  len(y) , len(coodr))
-    if [(x[t]-1),y[t],z[t]] in coodr or x[t]-1 < -box_side/2 :
+    if [(x[t]-1),y[t],z[t]] in coodr:
         left = False
     else:
         left = True
-    if [(x[t]+1),y[t],z[t]] in coodr or x[t]+1 > box_side/2 :
+    if [(x[t]+1),y[t],z[t]] in coodr:
         right = False
     else:
         right = True
-    if [(x[t]),(y[t]+1),z[t]] in coodr or y[t]+1 > box_side/2 :
+    if [(x[t]),(y[t]+1),z[t]] in coodr:
         front = False
     else:
         front = True
-    if [(x[t]),(y[t]-1),z[t]] in coodr or y[t]-1 < -box_side/2 :
+    if [(x[t]),(y[t]-1),z[t]] in coodr:
         behind = False
     else:
         behind = True
-    if [(x[t]),(y[t]),(z[t]+1)] in coodr or z[t]+1 > box_side/2 :
+    if [(x[t]),(y[t]),(z[t]+1)] in coodr:
         up = False
     else:
         up = True
-    if [(x[t]),(y[t]),(z[t]-1)] in coodr or z[t]-1 < -box_side/2 :
+    if [(x[t]),(y[t]),(z[t]-1)] in coodr:
         down = False
     else:
         down = True
@@ -176,17 +172,12 @@ atom_id = 0
 mol_id = 0
 
 natoms= len(x)
+box_x = np.max(np.absolute([x,y,z]))*5
 mass_atom = 14
 nparts = 1
 
-# Shifting procedure, to the centre of the volume:
-x += (box_side+1)/2*np.ones(len(x))
-y += (box_side+1)/2*np.ones(len(y))
-z += (box_side+1)/2*np.ones(len(z))
-
-
 with open('data5','w') as fout:
-    fout.write("LAMMPS data file\n\n%d atoms\n%d bonds\n%d angles\n\n1 atom types\n1 bond types\n1 angle types\n\n0.0 %f xlo xhi\n0.0 %f ylo yhi\n0.0 %f zlo zhi\n\nMasses\n\n1 %f\n\nAtoms\n\n"%(natoms,natoms-1, natoms-2,box_side,box_side,box_side,mass_atom))
+    fout.write("LAMMPS data file\n\n%d atoms\n%d bonds\n%d angles\n\n1 atom types\n1 bond types\n1 angle types\n\n0.0 %f xlo xhi\n0.0 %f ylo yhi\n0.0 %f zlo zhi\n\nMasses\n\n1 %f\n\nAtoms\n\n"%(natoms,natoms-1, natoms-2,box_x,box_x,box_x,mass_atom))
     
     for j in range(0,nparts):
         mol_id+=1

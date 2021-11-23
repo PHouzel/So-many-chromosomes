@@ -1,14 +1,14 @@
 #!/bin/bash
 
 # run multiple simulation with these parameters
-N_ITER=2
-SIM_NAME=run2-1000
+N_ITER=10
+SIM_NAME=run6-2000
 DIR_NAME=dumplin_cluster
 DIR_NAME_IMAGE=dumplin_cluster_image
 DUMPLIN_NAME=dumplin
 DUMPLIN_NAME_IMAGE=dumplin_image
-py_NAME=self-avoid.py
-in_NAME=polymer-descript.in
+py_NAME=wall-avoid.py
+in_NAME=polymer-wall.in
 
 bar=_
 echo "Arguments: "
@@ -22,7 +22,7 @@ cd $SIM_NAME
 mkdir $DIR_NAME
 mkdir $DIR_NAME_IMAGE
 
-for (( iter=1; iter<=2; iter++ ))
+for (( iter=1; iter<=N_ITER; iter++ ))
 do
    # Execute
 	python3 $py_NAME
