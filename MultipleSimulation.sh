@@ -7,8 +7,8 @@ DIR_NAME=dumplin_cluster
 DIR_NAME_IMAGE=dumplin_cluster_image
 DUMPLIN_NAME=dumplin
 DUMPLIN_NAME_IMAGE=dumplin_image
-py_NAME=wall-avoid.py
-in_NAME=polymer-wall.in
+py_NAME=anchoring-1wall-avoid.py
+in_NAME=polymer-anchoring-1wall.in
 
 bar=_
 echo "Arguments: "
@@ -22,7 +22,7 @@ cd $SIM_NAME
 mkdir $DIR_NAME
 mkdir $DIR_NAME_IMAGE
 
-for (( iter=1; iter<=N_ITER; iter++ ))
+for (( iter=7; iter<=N_ITER; iter++ ))
 do
    # Execute
 	python3 $py_NAME

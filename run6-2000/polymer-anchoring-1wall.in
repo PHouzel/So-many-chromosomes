@@ -77,7 +77,7 @@ dump 3 all image ${trajdump} dumplin_image/dump.${simname}.*.jpg type type #zoom
 
 ## angles
 angle_style  cosine            # https://docs.lammps.org/angle_cosine.html (assume E artic = E document and extract K const)
-angle_coeff   1  20.0         # modified, in origin was 20
+angle_coeff   1  7.0         # modified, in origin was 20
 # this choice gives a polymer with the same persistence length as DNA
 
 ## Between bonded atoms 
