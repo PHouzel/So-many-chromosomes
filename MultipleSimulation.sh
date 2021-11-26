@@ -1,6 +1,9 @@
 #!/bin/bash
 
-# run multiple simulation with these parameters
+# Run multiple simulations with these parameters
+# Care: dumplin and dumplin_image must be present and empty.
+# No dumplin_cluster and dumplin_cluster_image can appear.
+
 N_ITER=10
 SIM_NAME=run6-2000
 DIR_NAME=dumplin_cluster
