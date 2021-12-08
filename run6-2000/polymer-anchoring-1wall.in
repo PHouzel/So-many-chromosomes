@@ -1,3 +1,7 @@
+
+Hai risolto il problema dello scaling della box con coarse graining? Check general notes per dettaglio
+
+
 #NUMBER OF STEPS OF RUNS
 variable nsteps			equal 	17e6	#NVT run steps
 

@@ -1,0 +1,70 @@
+aDEADLINE - Tuesday 14th
+FINAL DEADLINE - 17 Dec.
+
+You look like you have put in a very large amount of work into the project. Congrats on your efforts and results. The description of the numerical model is quite clear.
+
+When it comes to the report, there are two main issues. The first one is that despite laudable efforts to introduce your investigations qualitatively, the introduction doesn't really manage to clarify what your hypothesis/goal is, and to make it credible.
+FREE - What are we trying to achieve: explain the difference between literature pers length and data-fit pers length. 
+CHECK: consistency of our fitting (range of validity, ect.)
+Pierre - Show the linear fit on data plot (left).
+Pierre - Fit of right graph data with "asymm gauss" to get a mean value for comparison
+Lo - Coarse graining with Kuhn length, 0 bending rigidity. Introduce excluded-volume-solution later.
+N - Goal: we reproduce the behaviour of persistance length wrt confinment (box dimension, free, 100, 75, 50, 25) and then study the packing density (left graph)
+Lo - Hp: neighbour portion of the chain behaves like a wall, the "compression" of dna is homogeneous in all the nucleus, etc. 
+    Check this, different from my initial interpretation
+
+
+The second issue is that the report doesn't do a very good job at describing the methods by which you draw your conclusions. 
+
+You mention a fit that suggests a small persistence length several times, but never show it or describe how it is done. 
+Pierre - Show the plots, lin fit
+
+The reader is left wondering whether the short persistence length is mainly due to the plateau of the data, or to the initial slope. 
+N & co - CLARIFY: use only linear regime, not the plateu.
+
+Likewise, the description of the polymer equilibration mostly sounds like "trust us, it works". The issue is that the so-called equilibration then gives rise very surprising conclusions in Fig. 1 (swelling exponent depend on initial conditions?), which just sounds like the polymer isn't equilibrated. Or was the polymer not supposed to be equilibrated? This is confusing. 
+N - Not equil, metastable states, evolution later in the simulations
+N - Paragraph about method section, with very long simulations to have some assessment about it. Plots of radius of gyr wrt time to support our metastable-state claim
+- Care with self-confinment
+
+The discussion of the attachment point is completely unclear: what is the geometry considered? To prove what? Maybe provide a sketch? 
+Lo - Be more clear
+
+Finally I do not buy the self-confinement due to a combination of lack of plausibility, lack of a suggested physical explanation, sparseness of data and lack of clarity of the data analysis procedures.
+Lu - How do we prove the plateu exists (in sim)? Obs of rad of gyr in time, certain number of those.
+Lu - How do we support self-confinment as cause of the plateu in our data? 
+
+
+Some more loose comments:
+
+It is not clear what you mean by "dynamics".
+Co et N (with half brain) - Explain in the methods part
+
+I do not understand the discussion of procaryote vs. eukaryote.
+Free for now - No more central, maybe discussion?
+
+How are the fits of Fig. 1 done?
+All - polynomial fitting, Flory theory
+
+The final paragraph mentions a persistence length fit to the data. How is it done? How can I assess the validity of the conclusions?
+All - More infos
+
+GENERAL: more exhaustive captions
+
+I don't understand the different colored lines on the right-hand panel of Fig. 2
+"side length of 50 bp", "distance length of 1/3": why?
+
+I am not convinced that the swelling exponents of Fig. 1 are significantly different from 1/2 and 2, which are the exponents associated with the initial conditions.
+Lu - Check it, maybe highlight it in some way.
+
+In the intro: "the main findings are summarized [in the conclusion]": announce them now!
+
+After Eq. (4): you follow a suggestion by Brackley et al.. What is the basis for this suggestion and why is it a good idea to follow it?
+N (45,6 % of brain)- Just precise that
+
+"free-floating polymer": do you mean freely jointed chain?
+All - correction: Not constrained by BCs.
+
+A suggestion: predict the persistence length on units of \sigma that should emerge from Eq. (4).
+- Mention units explicitly
+- Prediction in this way isn't correct, other way around (the one we're using)

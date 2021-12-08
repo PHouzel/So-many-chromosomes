@@ -1,9 +1,21 @@
 basis pair length = 3.4 A = 340 pm = 0.34 nm 
 
 Persistance length of DNA about 150 bp i.e. 50 nm ([1])
+Kuhn length = 2 * persistance length = 300 bp
+
+Packing density (human): approx 1% 
 
 Chromosome 4 : 180e6 bp, i.e. each chromatid 90e6 bp
 Chromosome 3 yeast: 3e5 bp ([3])
 
 For example a double stranded DNA (dsDNA) has persistence length lp = 50 nm
 and Kuhn length b = 100 nm. ([4])
+
+0.9 mu m in right graph --> 
+
+TO DO (LORENZO):
+- simulation with all walls A = 7 is meaningful to understand if anchoring is 
+relevant only if we keep the correct packing density, otherwise is random. 
+- Check how do box_side scale with the coarse graining 
+- Also modify everything using Kuhn length i.e. 2*lp (mod boht chain and box)
+- do not forgot to remove completely the bending potential

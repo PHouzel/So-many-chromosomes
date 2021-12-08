@@ -5,13 +5,13 @@
 # No dumplin_cluster and dumplin_cluster_image can appear.
 
 N_ITER=10
-SIM_NAME=run6-2000
+SIM_NAME=run2-1000
 DIR_NAME=dumplin_cluster
 DIR_NAME_IMAGE=dumplin_cluster_image
 DUMPLIN_NAME=dumplin
 DUMPLIN_NAME_IMAGE=dumplin_image
-py_NAME=anchoring-1wall-avoid.py
-in_NAME=polymer-anchoring-1wall.in
+py_NAME=anchoring-1wall-avoid-A0.py
+in_NAME=polymer-anchoring-1wall-A0.in
 
 bar=_
 echo "Arguments: "
@@ -25,7 +25,7 @@ cd $SIM_NAME
 mkdir $DIR_NAME
 mkdir $DIR_NAME_IMAGE
 
-for (( iter=7; iter<=N_ITER; iter++ ))
+for (( iter=1; iter<=N_ITER; iter++ ))
 do
    # Execute
 	python3 $py_NAME
