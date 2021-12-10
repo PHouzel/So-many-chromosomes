@@ -14,10 +14,10 @@ length = 25
 dims = 3
 
 # box definition
-box_side = 50
+box_side = 45
 
 # chain length -1
-tmax = 1999
+tmax = 999
 t_centromere = tmax//2
 if type(t_centromere) != int:
     raise NameError('centromere index not integer')

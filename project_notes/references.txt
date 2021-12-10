@@ -5,3 +5,4 @@ Layout:
 - [2] bending rigidity and elasticity: DNA Elasticity from Short DNA to Nucleosomal DNA. Ashok Garai, Suman Saurabh, Yves Lansac, and Prabal K. Maiti, The Journal of Physical Chemistry B 2015 119 (34), 11146-11156
 - [3] yeast DNA: https://yeastgenome.org/contig/Chromosome_III
 - [4] Lukas' prof notes
+- [5] about DNA structure: A Brief Review of Nucleosome Structure Amber Cutter and Jeffrey J. Hayes https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4598263/#:~:text=The%20core%20histones%20assemble%20into,1A).

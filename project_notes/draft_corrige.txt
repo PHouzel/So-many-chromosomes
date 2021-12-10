@@ -1,18 +1,24 @@
-aDEADLINE - Tuesday 14th
-FINAL DEADLINE - 17 Dec.
+DEADLINE - Tuesday 14th
+FINAL DEADLINE - 22 Dec.
 
 You look like you have put in a very large amount of work into the project. Congrats on your efforts and results. The description of the numerical model is quite clear.
 
 When it comes to the report, there are two main issues. The first one is that despite laudable efforts to introduce your investigations qualitatively, the introduction doesn't really manage to clarify what your hypothesis/goal is, and to make it credible.
-FREE - What are we trying to achieve: explain the difference between literature pers length and data-fit pers length. 
-CHECK: consistency of our fitting (range of validity, ect.)
-Pierre - Show the linear fit on data plot (left).
-Pierre - Fit of right graph data with "asymm gauss" to get a mean value for comparison
+FREE - What are we trying to achieve: explain the difference between literature pers length and data-fit pers length. i.e. Why is smaller/more dense?
+CHECK: consistency of our fitting (range of validity, ect.) SOLVED
+P - Show the linear fit on data plot (left).
+P - Fit of right graph data with "asymm gauss" to get a mean value for comparison
 Lo - Coarse graining with Kuhn length, 0 bending rigidity. Introduce excluded-volume-solution later.
 N - Goal: we reproduce the behaviour of persistance length wrt confinment (box dimension, free, 100, 75, 50, 25) and then study the packing density (left graph)
-Lo - Hp: neighbour portion of the chain behaves like a wall, the "compression" of dna is homogeneous in all the nucleus, etc. 
-    Check this, different from my initial interpretation
+Lo - Hp: neighbour portion of the chain behaves like a wall, the "compression" of dna is isotropic and homogeneous in all the nucleus, etc. 
 
+Tip: which possible conditions are involved? Inside/outside of cell key point, interphase chromatine.
+
+P - Spaghetti state, or even histons? Mention and then choose, motivate.
+
+CARE: Ratio lp/boxsize << 1 (check scaling of boxsize wrt chain length = 47) -> BIG problem here (Lu aware). Try 10k atoms, 200 boxsize and lp = 20/10 (?)
+
+USE 100 or 1k? SOLVED
 
 The second issue is that the report doesn't do a very good job at describing the methods by which you draw your conclusions. 
 
@@ -22,15 +28,25 @@ Pierre - Show the plots, lin fit
 The reader is left wondering whether the short persistence length is mainly due to the plateau of the data, or to the initial slope. 
 N & co - CLARIFY: use only linear regime, not the plateu.
 
-Likewise, the description of the polymer equilibration mostly sounds like "trust us, it works". The issue is that the so-called equilibration then gives rise very surprising conclusions in Fig. 1 (swelling exponent depend on initial conditions?), which just sounds like the polymer isn't equilibrated. Or was the polymer not supposed to be equilibrated? This is confusing. 
+Likewise, the description of the polymer equilibration mostly sounds like "trust us, it works". 
+The issue is that the so-called equilibration then gives rise very surprising conclusions in Fig. 1 (swelling exponent depend on initial conditions?), which just sounds like the polymer isn't equilibrated. Or was the polymer not supposed to be equilibrated? This is confusing. 
 N - Not equil, metastable states, evolution later in the simulations
 N - Paragraph about method section, with very long simulations to have some assessment about it. Plots of radius of gyr wrt time to support our metastable-state claim
 - Care with self-confinment
+Prove the Flory scale: is it worth? Relevant for small lp for free DNA, but in our case?
+Check =! scales (at least 1 order of magnitude)
+It's a problem if it doesn't equilibr? 
+Does the plateau exist?
+The long gen dist behaviour seems a line, with some microscopic effects in the early stage.
+Self-confinment is "surprising", entaglement is a transient effect with long relax time. 
+Discuss self-confinment in our central question, maybe with ext constraint the self-confin doesn't express itself.
+
 
 The discussion of the attachment point is completely unclear: what is the geometry considered? To prove what? Maybe provide a sketch? 
 Lo - Be more clear
 
-Finally I do not buy the self-confinement due to a combination of lack of plausibility, lack of a suggested physical explanation, sparseness of data and lack of clarity of the data analysis procedures.
+Finally I do not buy the self-confinement due to a combination of lack of plausibility, 
+lack of a suggested physical explanation, sparseness of data and lack of clarity of the data analysis procedures.
 Lu - How do we prove the plateu exists (in sim)? Obs of rad of gyr in time, certain number of those.
 Lu - How do we support self-confinment as cause of the plateu in our data? 
 
@@ -38,7 +54,7 @@ Lu - How do we support self-confinment as cause of the plateu in our data?
 Some more loose comments:
 
 It is not clear what you mean by "dynamics".
-Co et N (with half brain) - Explain in the methods part
+Co et N  - Explain in the methods part
 
 I do not understand the discussion of procaryote vs. eukaryote.
 Free for now - No more central, maybe discussion?
@@ -60,7 +76,7 @@ Lu - Check it, maybe highlight it in some way.
 In the intro: "the main findings are summarized [in the conclusion]": announce them now!
 
 After Eq. (4): you follow a suggestion by Brackley et al.. What is the basis for this suggestion and why is it a good idea to follow it?
-N (45,6 % of brain)- Just precise that
+N - Just precise that
 
 "free-floating polymer": do you mean freely jointed chain?
 All - correction: Not constrained by BCs.
@@ -68,3 +84,35 @@ All - correction: Not constrained by BCs.
 A suggestion: predict the persistence length on units of \sigma that should emerge from Eq. (4).
 - Mention units explicitly
 - Prediction in this way isn't correct, other way around (the one we're using)
+
+
+
+-------------
+
+Decision tree:
+Does our literature refer to the correct experim configuration? Y / N
+Lo - Check the conditions of the result of lp = 20
+
+If Y : Is DNA more compact of expected? Y / N.  
+Check
+
+If Y : Why DNA is so compact? Options: Self-confinment Y / N, histons Y / N , nucleus Y / N , anchoring Y / N
+
+- Self-confinment on free chain is enough to confine? Y / N, given the following assumption:
+Assumption: knots are local features, we can simulate small chains and observe the result, assume their effects scale to the larger structure. 
+Measure of radius of gyration increase for long times -> Self-confinment N 
+(Parenthesis on prokar vs eukar (?) ) 
+
+- Histons? Y / N
+Lo - Check
+
+- Anchoring? Y / N. Simulate same situation with 1 anchoring for different boxes. The goal is to prove 1 anchoring is not enough to confine. Box for correct lp or packing density. CARE lp must be << boxsize.
+Compare results with the right graph.
+
+- Nucleus? Y / N
+
+if Nucleus Y: How do we simulate the effect of nucleus confinment on a 1M long confined chain? 
+We can't simulate 1M bp, so we simulate 1000 bp with lp = 20 confined in a box. 
+Expected result? Obtain a packing density compatible with the real one once we get an effective lp comparable to the one fitted from the left graph.
+Assumption: simulate only a small part, assuming the nearby DNA confines our small portion like a box would. Maybe we can avoid to say explicitly that and assuming a scaling of this behaviour.
+

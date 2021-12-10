@@ -8,10 +8,12 @@ N_ITER=10
 SIM_NAME=run2-1000
 DIR_NAME=dumplin_cluster
 DIR_NAME_IMAGE=dumplin_cluster_image
+DIR_NAME_RG_CLUSTER=rad_gyr_cluster
+DIR_NAME_RG=rad_gyr
 DUMPLIN_NAME=dumplin
 DUMPLIN_NAME_IMAGE=dumplin_image
-py_NAME=anchoring-1wall-avoid-A0.py
-in_NAME=polymer-anchoring-1wall-A0.in
+py_NAME=wall-avoid.py
+in_NAME=polymer-wall.in
 
 bar=_
 echo "Arguments: "
@@ -24,6 +26,7 @@ echo $in_NAME
 cd $SIM_NAME
 mkdir $DIR_NAME
 mkdir $DIR_NAME_IMAGE
+mkdir $DIR_NAME_RG_CLUSTER
 
 for (( iter=1; iter<=N_ITER; iter++ ))
 do
@@ -37,9 +40,14 @@ do
    cd $DIR_NAME_IMAGE
    mkdir $DUMPLIN_NAME_IMAGE$bar$iter
    cd ..
+   cd $DIR_NAME_RG_CLUSTER
+   mkdir $DIR_NAME_RG$bar$iter
+   cd ..
 
    cp -R dumplin $DIR_NAME/$DUMPLIN_NAME$bar$iter
    cp -R dumplin_image $DIR_NAME_IMAGE/$DUMPLIN_NAME_IMAGE$bar$iter
+   
+   cp radius_of_gyration_squared.dat $DIR_NAME_RG_CLUSTER/$DIR_NAME_RG$bar$iter
 
    # Delete old run files
    rm dumplin/*

@@ -9,7 +9,7 @@ length = 25
 dims = 3
 
 # box definition
-box_side = 50
+box_side = 45
 
 # chain length -1
 tmax = 999

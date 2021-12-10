@@ -1,4 +1,5 @@
 basis pair length = 3.4 A = 340 pm = 0.34 nm 
+volume approx 0.02 nm^3
 
 Persistance length of DNA about 150 bp i.e. 50 nm ([1])
 Kuhn length = 2 * persistance length = 300 bp
@@ -19,3 +20,12 @@ relevant only if we keep the correct packing density, otherwise is random.
 - Check how do box_side scale with the coarse graining 
 - Also modify everything using Kuhn length i.e. 2*lp (mod boht chain and box)
 - do not forgot to remove completely the bending potential
+
+
+[5], about histons: The structure of the nucleosome core is relatively invariant from yeast to metazoans [1,2], 
+and includes a 147 bp segment of DNA and two copies each of four core histone proteins. 
+The core histones assemble into a spool-like structure onto which the core DNA is wrapped, 
+in about 1¾ left-handed superhelical turns, forming a squat disc-like structure about 5.5 nm in height and 11 nm
+in diameter [3] (Fig. 1A).
+So one nucleosome is about 520 nm^3, containing approx 150 bp ( = 3 nm^3). That corresponds to 0.6% packing density,
+half of the value given in the literature.
